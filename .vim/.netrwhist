@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/sirc/Documents/Personnel/Projets/site/v2/about'
+let g:netrw_dirhist_2='/home/sirc/Documents/Professionnel/Ingénieur/Jobs/CNRS/MD'
+let g:netrw_dirhist_3='/home/sirc/Documents/Professionnel/Ingénieur/Jobs/CNRS'
+let g:netrw_dirhist_4='/home/sirc/Documents/Professionnel/Ingénieur/Jobs/CNRS/MD'
+let g:netrw_dirhist_5='/home/sirc/Documents/Professionnel/Ingénieur/Jobs/CNRS'
+let g:netrw_dirhist_6='/home/sirc/Documents/Professionnel/Ingénieur/Jobs'
+let g:netrw_dirhist_7='/home/sirc/.config/nvim/config'
+let g:netrw_dirhist_8='/tmp'
+let g:netrw_dirhist_9='/home/sirc/.config/nvim/config'

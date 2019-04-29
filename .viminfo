@@ -1,0 +1,437 @@
+# Ce fichier viminfo a été généré par Vim 7.4.
+# Vous pouvez l'éditer, mais soyez prudent.
+
+# 'encoding' dans lequel ce fichier a été écrit
+*encoding=utf-8
+
+
+# hlsearch on (H) or off (h):
+~h
+# Dernier motif de recherche  :
+~MSle0~/c\.f
+
+# Historique ligne de commande (chronologie décroissante) :
+:q
+:wq
+:GrammalecteClear
+:GrammalecteCheck
+:Grammalecte
+:q!
+:i
+:e
+
+# Historique chaîne de recherche (chronologie décroissante) :
+?/c\.f
+?/c.
+?/c.f.
+?/etc
+?/quelque
+?/élargie
+?/la
+?/dopé
+?/disp
+?/du
+?/un
+?/leur
+?/effec
+?/file://
+?/trimm
+?/home/sirc/Documents/Professionnel/Ingénieur/Stages/SFE/BU/Research Drive/
+?/sander
+?/ubu
+?/serverna
+?/:wq
+?/&&
+?/$num+1
+?/awk
+?/+"
+?/+$num
+?/num 
+?/+num
+?/mysh
+?/tox
+?/home/sirc/.config/redshift.conf
+
+# Historique expression (chronologie décroissante) :
+
+# Historique ligne de saisie (chronologie décroissante) :
+
+# Historique ligne de saisie (chronologie décroissante) :
+
+# Registres :
+"1	LINE	0
+	
+"2	LINE	0
+	# Install curl and jq (required only for ease of installing the latest version of KeePassRPC)
+	sudo apt install 
+"3	LINE	0
+	
+	# Install Mono
+	sudo apt-get install 
+"4	LINE	0
+	sudo apt-get install mono-complete
+	
+"5	LINE	0
+	sudo apt-get install mono-complete
+	
+"6	LINE	0
+	
+"7	LINE	0
+	# Install KeePass
+	sudo apt-get install keepass2
+"8	LINE	0
+	sudo apt install jq
+""-	CHAR	0
+	env 
+
+# Marques dans le fichier :
+'0  34  0  ~/Documents/Personnel/Projets/rusttleship/src/cell.rs
+'1  37  0  ~/Documents/Personnel/Projets/PiVPN/docker.sh
+'2  1  0  /tmp/install-kee.sh
+'3  17  0  /tmp/install-kee.sh
+'4  1  13  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+'5  18  26  ~/.vimrc
+'6  17  30  ~/.vimrc
+'7  2  23  /tmp/zsh0h0ipU
+'8  1  170  /tmp/zshKqRVIo
+'9  1  189  /tmp/zsh6Xp4n7
+
+# Liste de sauts (le plus récent en premier) :
+-'  34  0  ~/Documents/Personnel/Projets/rusttleship/src/cell.rs
+-'  29  58  ~/Documents/Personnel/Projets/rusttleship/src/cell.rs
+-'  28  69  ~/Documents/Personnel/Projets/rusttleship/src/cell.rs
+-'  1  0  ~/Documents/Personnel/Projets/rusttleship/src/cell.rs
+-'  37  0  ~/Documents/Personnel/Projets/PiVPN/docker.sh
+-'  1  0  ~/Documents/Personnel/Projets/PiVPN/docker.sh
+-'  1  0  /tmp/install-kee.sh
+-'  17  0  /tmp/install-kee.sh
+-'  10  21  /tmp/install-kee.sh
+-'  11  0  /tmp/install-kee.sh
+-'  13  0  /tmp/install-kee.sh
+-'  1  13  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+-'  163  75  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+-'  279  440  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+-'  133  21  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+-'  195  112  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+-'  197  42  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+-'  173  232  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+-'  104  59  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+-'  147  62  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+-'  148  0  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+-'  146  0  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+-'  128  0  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+-'  108  73  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+-'  26  408  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+-'  7  15  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+-'  18  26  ~/.vimrc
+-'  28  8  ~/.vimrc
+-'  1  0  ~/.vimrc
+-'  17  30  ~/.vimrc
+-'  14  0  ~/.vimrc
+-'  2  23  /tmp/zsh0h0ipU
+-'  1  0  /tmp/zsh0h0ipU
+-'  1  170  /tmp/zshKqRVIo
+-'  1  189  /tmp/zsh6Xp4n7
+-'  11  0  /etc/fstab
+-'  1  1  /etc/fstab
+-'  2  23  ~/.bu_cred
+-'  1  0  ~/.bu_cred
+-'  1  93  /tmp/zshgGx83f
+-'  1  107  /tmp/zshZWBBYC
+-'  1  0  /tmp/zshDkgnnK
+-'  1  97  /tmp/zshZnV8Kq
+-'  1  96  /tmp/zsh8D8i6W
+-'  1  23  /tmp/zshn4wo7C
+-'  1  93  /tmp/zsha9cEHE
+-'  1  93  /tmp/zshWD8AFv
+-'  1  0  /etc/apt/sources.list.d/tox.list
+-'  1  0  /etc/apt/sources.list
+-'  5  13  ~/Documents/Personnel/Projets/advent-of-code/2017/day-1/Cargo.toml
+-'  1  0  ~/Documents/Personnel/Projets/advent-of-code/2017/day-1/Cargo.toml
+-'  1  0  ~/mame.ini
+-'  2  105  ~/Documents/Personnel/Projets/VueRemote/src/App.vue
+-'  1  0  ~/Documents/Personnel/Projets/VueRemote/src/App.vue
+-'  38  4  ~/.config/redshift.conf
+-'  1  0  ~/.config/redshift.conf
+-'  1  0  ~/descrip-github
+-'  108  47  ~/.zshrc
+-'  1  0  ~/.zshrc
+-'  1  0  ~/req-nativescript.sh
+-'  12  0  ~/req-nativescript.sh
+-'  2  14  ~/Documents/Personnel/Projets/easterust/src/main.rs
+-'  1  0  ~/Documents/Personnel/Projets/easterust/src/main.rs
+-'  17  15  ~/Documents/Personnel/Projets/mootse-watcher/src/main.rs
+-'  1  0  ~/Documents/Personnel/Projets/mootse-watcher/src/main.rs
+-'  86  58  ~/Documents/Personnel/Projets/mootse-watcher/src/main.rs
+-'  56  4  ~/Documents/Personnel/Projets/mootse-watcher/src/main.rs
+-'  5  0  ~/Documents/Personnel/Projets/mootse-watcher/src/main.rs
+-'  67  0  ~/Documents/Personnel/Projets/mootse-watcher/src/main.rs
+-'  122  0  ~/Documents/Personnel/Projets/mootse-watcher/src/main.rs
+-'  55  4  ~/Documents/Personnel/Projets/mootse-watcher/src/main.rs
+-'  1  0  src/main.rs
+-'  1  0  src/main.rs
+-'  1  0  src/main.rs
+-'  1  0  src/main.rs
+-'  1  0  src/main.rs
+-'  1  0  src/main.rs
+-'  1  0  src/main.rs
+-'  1  0  src/main.rs
+-'  1  0  src/main.rs
+-'  1  0  src/main.rs
+-'  1  0  src/main.rs
+-'  1  0  src/main.rs
+-'  1  0  src/main.rs
+-'  1  0  src/main.rs
+-'  1  0  src/main.rs
+-'  1  0  src/main.rs
+-'  17  15  ~/Documents/Personnel/Projets/mootse-watcher/src/main.rs
+-'  1  0  ~/Documents/Personnel/Projets/mootse-watcher/src/main.rs
+-'  86  58  ~/Documents/Personnel/Projets/mootse-watcher/src/main.rs
+-'  56  4  ~/Documents/Personnel/Projets/mootse-watcher/src/main.rs
+-'  5  0  ~/Documents/Personnel/Projets/mootse-watcher/src/main.rs
+-'  67  0  ~/Documents/Personnel/Projets/mootse-watcher/src/main.rs
+-'  122  0  ~/Documents/Personnel/Projets/mootse-watcher/src/main.rs
+-'  55  4  ~/Documents/Personnel/Projets/mootse-watcher/src/main.rs
+-'  1  13  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+-'  163  75  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+-'  279  440  ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+
+# Historique des marques dans les fichiers (les plus récentes en premier) :
+
+> ~/Documents/Personnel/Projets/rusttleship/src/cell.rs
+	"	34	0
+	^	29	59
+	.	29	0
+	+	28	0
+	+	29	0
+
+> ~/Documents/Personnel/Projets/PiVPN/docker.sh
+	"	37	0
+
+> /tmp/install-kee.sh
+	"	1	0
+	^	1	1
+	.	1	0
+	+	18	229
+	+	17	0
+	+	17	26
+	+	14	0
+	+	11	0
+	+	11	21
+	+	11	0
+	+	11	0
+	+	10	20
+	+	12	30
+	+	17	16
+	+	12	44
+	+	10	0
+	+	6	45
+	+	9	21
+	+	17	0
+	+	1	0
+
+> ~/Documents/LaTeX/Professionnel/Ingénieur/SFE/rapport/chapters/part_1.md
+	"	1	13
+	^	163	395
+	.	163	395
+	+	7	406
+	+	26	495
+	+	93	64
+	+	108	65
+	+	108	248
+	+	128	0
+	+	131	244
+	+	147	61
+	+	104	235
+	+	173	211
+	+	195	112
+	+	195	22
+	+	157	22
+	+	279	440
+	+	163	395
+
+> ~/.vimrc
+	"	18	26
+	^	18	80
+	.	18	26
+	+	1	1
+	+	14	0
+	+	16	0
+	+	15	31
+	+	14	5
+	+	16	0
+	+	3	17
+	+	4	17
+	+	16	27
+	+	20	0
+	+	17	31
+	+	18	26
+
+> /tmp/zsh0h0ipU
+	"	2	23
+	^	2	24
+	.	2	23
+	+	3	0
+	+	1	59
+	+	2	23
+
+> /tmp/zshKqRVIo
+	"	1	170
+	^	1	171
+	.	1	171
+	+	1	171
+
+> /tmp/zsh6Xp4n7
+	"	1	189
+	^	1	190
+	.	1	189
+	+	1	111
+	+	1	0
+	+	1	112
+	+	1	0
+	+	1	113
+	+	1	0
+	+	1	113
+	+	1	0
+	+	1	189
+
+> /etc/fstab
+	"	11	0
+	^	11	0
+	.	11	0
+	+	11	208
+	+	11	85
+	+	11	170
+	+	11	0
+
+> ~/.bu_cred
+	"	2	23
+	^	2	24
+	.	2	9
+	+	2	0
+	+	1	13
+	+	2	9
+
+> /tmp/zshgGx83f
+	"	1	93
+	^	1	94
+	.	1	93
+	+	1	92
+	+	1	0
+	+	1	93
+	j	1	109
+	m	1	109
+
+> /tmp/zshZWBBYC
+	"	1	107
+	^	1	108
+	.	1	107
+	+	1	107
+
+> /tmp/zshDkgnnK
+	"	1	0
+	.	1	0
+	+	1	0
+
+> /tmp/zshZnV8Kq
+	"	1	97
+	^	1	98
+	.	1	97
+	+	1	97
+	l	1	89
+
+> /tmp/zsh8D8i6W
+	"	1	96
+	^	1	97
+	.	1	96
+	+	1	96
+
+> /tmp/zshn4wo7C
+	"	1	23
+	^	1	22
+	.	1	23
+	+	1	23
+
+> /tmp/zsha9cEHE
+	"	1	93
+	^	1	94
+	.	1	93
+	+	1	0
+	+	1	93
+
+> /tmp/zshWD8AFv
+	"	1	93
+	^	1	94
+	.	1	93
+	+	1	93
+
+> /etc/apt/sources.list.d/tox.list
+	"	1	0
+
+> /etc/apt/sources.list
+	"	1	0
+
+> ~/Documents/Personnel/Projets/advent-of-code/2017/day-1/Cargo.toml
+	"	5	13
+	^	5	14
+	.	6	0
+	+	5	14
+	+	6	0
+
+> ~/mame.ini
+	"	1	0
+
+> ~/Documents/Personnel/Projets/VueRemote/src/App.vue
+	"	2	105
+	^	2	106
+	.	2	79
+	+	2	79
+
+> ~/.config/redshift.conf
+	"	38	4
+	^	38	4
+	.	38	0
+	+	37	8
+	+	38	0
+
+> ~/descrip-github
+	"	1	0
+	^	1	1
+	.	1	0
+	+	1	0
+
+> ~/.zshrc
+	"	108	47
+	^	108	48
+	.	108	21
+	+	72	24
+	+	108	21
+
+> ~/req-nativescript.sh
+	"	1	0
+	^	12	0
+	.	11	0
+	+	1	9
+	+	7	43
+	+	11	0
+
+> ~/Documents/Personnel/Projets/easterust/src/main.rs
+	"	2	14
+	^	2	15
+	.	2	14
+	+	2	14
+
+> ~/Documents/Personnel/Projets/mootse-watcher/src/main.rs
+	"	17	15
+	^	17	16
+	.	17	16
+	+	56	16
+	+	11	0
+	+	17	24
+	+	56	92
+	+	86	62
+	+	86	59
+	+	17	16
+
+> src/main.rs
+	"	1	0
