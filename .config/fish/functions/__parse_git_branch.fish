@@ -1,0 +1,1 @@
+/home/sirc/.config/fisherman/pure/functions/__parse_git_branch.fish
