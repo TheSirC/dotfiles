@@ -7,7 +7,7 @@ call plug#begin()
 	Plug 'reedes/vim-pencil'
 	Plug 'scrooloose/nerdtree'
 	Plug 'tpope/vim-fugitive'
-	Plug 'liuchengxu/vista.vim'
+	Plug 'majutsushi/tagbar'
 	Plug 'inside/vim-search-pulse'
 	Plug 'terryma/vim-smooth-scroll'
 	Plug 'prettier/vim-prettier', { 'do': 'yarn install' }

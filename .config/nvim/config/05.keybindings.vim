@@ -20,7 +20,7 @@ map <Leader> <Plug>(easymotion-prefix)
 nnoremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Open outline on <leader>o
-nnoremap <silent> <space>o :Vista!!<CR>
+nnoremap <silent> <Leader>o :TagbarToggle<CR>
 
 " change working directory to where the file in the buffer is located
 " if user types `,cd`
