@@ -1,3 +1,7 @@
+if !exists(":PlugInstall")
+	silent! execute '!curl --create-dirs -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+
 call plug#begin() 
 	" GUI
 	Plug 'itchyny/lightline.vim'
@@ -8,6 +12,7 @@ call plug#begin()
 	Plug 'scrooloose/nerdtree'
 	Plug 'tpope/vim-fugitive'
 	Plug 'majutsushi/tagbar'
+	Plug 'tmux-plugins/vim-tmux'
 	Plug 'inside/vim-search-pulse'
 	Plug 'terryma/vim-smooth-scroll'
 	Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
