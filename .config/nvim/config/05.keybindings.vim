@@ -28,7 +28,9 @@ nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 
 " Filetype specific map
 filetype plugin on
-autocmd Filetype markdown nmap <leader>m :! pandoc --template template/lettre_de_motivation.tex --pdf-engine=xelatex % -o lettre.pdf <CR>
+autocmd Filetype markdown nmap <leader>m :! pandoc --template template/lettre_de_motivation.tex --pdf-engine=xelatex % -o %:r.pdf <CR>
+autocmd Filetype markdown nmap <leader>l :! pandoc --template cv-template/cv.tex --pdf-engine=xelatex % -o %:r.pdf <CR>
+
 " Rust specific keybindings
 autocmd Filetype rust map <leader>f :RustFmt <CR>
 autocmd Filetype rust map <leader>r <C-S>:RustRun <CR>

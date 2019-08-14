@@ -1,6 +1,10 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR EDITOR:nvim
+SETUVAR --export LIBGL_DRI3_DISABLE:true
+SETUVAR OPENSSL_DIR:/nix/store/arc6swqvpsxzhq0ymizha7g676s0yrn9\x2dopenssl\x2d1\x2e1\x2e1b\x2ddev
+SETUVAR OPENSSL_LIB_DIR:/nix/store/arc6swqvpsxzhq0ymizha7g676s0yrn9\x2dopenssl\x2d1\x2e1\x2e1b\x2ddev/lib
+SETUVAR --path RUST_SRC_PATH:/home/sirc/\x2erustup/toolchains/stable\x2dx86_64\x2dunknown\x2dlinux\x2dgnu/lib/rustlib/src/rust/src
 SETUVAR --export TASKDATA:/home/sirc/Documents/T\u00e2ches/
 SETUVAR --export TASKRC:/home/sirc/\x2econfig/taskrc
 SETUVAR ZO_CMD:zo

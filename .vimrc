@@ -2,6 +2,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set numberwidth=3
 set relativenumber
+set shell=/bin/sh
 
 " Checking that vim-plug is installed 
 if empty(glob('~/.vim/autoload/plug.vim'))

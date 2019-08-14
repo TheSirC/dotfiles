@@ -30,7 +30,7 @@ call plug#begin()
 	Plug 'vim-pandoc/vim-pandoc' 
 	Plug 'vim-pandoc/vim-pandoc-syntax' 
 	" Completion support
-	Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+	Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 	" Snippets
 	Plug 'honza/vim-snippets'
 	Plug 'sirver/ultisnips'
