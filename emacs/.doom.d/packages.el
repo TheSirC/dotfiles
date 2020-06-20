@@ -1,4 +1,3 @@
-;; -*- no-byte-compile: t; -*-
 ;;; ~/.doom.d/packages.el
 
 ;;; Examples:
@@ -7,4 +6,4 @@
 ;; (package! builtin-package :disable t)
 (package! avy-flycheck)
 (package! avy-menu)
-(package! direnv)
+(package! eglot)

@@ -1,0 +1,3 @@
+.config/nvim/plugged/*
+.vim/bundle/*
+.vim/spell/

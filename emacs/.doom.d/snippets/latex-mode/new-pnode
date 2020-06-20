@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: new-pnode
+# key: npnx                      
+# --
+([ ${1:$$(yas-choose-value '("Xnodesep" "offset"))}=$2 ]$3){ $4 }

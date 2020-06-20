@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: New overlay
+# key: new-overlay
+# condition: t
+# --
+self: super: {
+  $1 = super.$1.overrideAttrs (
+    oldAttrs: rec {
+    version = "$3";
+    sha256 = "$4";
+  }
+  );
+}
