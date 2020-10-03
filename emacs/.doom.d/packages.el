@@ -6,4 +6,4 @@
 ;; (package! builtin-package :disable t)
 (package! avy-flycheck)
 (package! avy-menu)
-(package! eglot)
+(package! systemd)
