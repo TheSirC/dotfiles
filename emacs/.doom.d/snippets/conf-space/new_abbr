@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: New abbreviation
+# key: abbr
+# --
+abbr -a $1 '$2'

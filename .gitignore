@@ -1,3 +1,5 @@
 .config/nvim/plugged/*
 .vim/bundle/*
 .vim/spell/
+/emacs/.doom.d/auto-save-list/
+/.template
