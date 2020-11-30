@@ -7,3 +7,4 @@
 (package! avy-flycheck)
 (package! avy-menu)
 (package! systemd)
+;;(package! magit-delta)
