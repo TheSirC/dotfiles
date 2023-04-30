@@ -1,0 +1,2 @@
+#!/run/current-system/sw/bin/bash
+#! nix-shell -p vmware-horizon-client age

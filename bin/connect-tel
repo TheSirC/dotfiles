@@ -1,0 +1,103 @@
+#!/usr/bin/env nix-shell
+#! nix-shell -i bash -p androidenv.androidPkgs_9_0.platform-tools scrcpy skim
+
+# Multiple devices connected with adb are NOT supported
+set -eo pipefail
+
+SCRCPY_CMD="scrcpy -Sw --max-size 720 --bit-rate 5M"
+
+launch_scrcpy() {
+    $SCRCPY_CMD --window-title "$WINDOW_TITLE" 1>&2 2> /tmp/scrcpy.log
+    echo $?
+}
+
+get_devices_list() {
+   echo "$(adb devices -l | tail -n +2)"
+}
+
+
+function try_connect() {
+    local device_address=$(get_devices_list | sk | awk '{print $1}')
+    $SCRCPY_CMD -s "$device_address"  --window-title "$WINDOW_TITLE" 1>&2 2> /tmp/scrcpy.log
+}
+
+function check_if_connected() {
+    local devices="$(get_devices_list | wc -l)"
+    # There is a blank line at the end of the adb command
+    # hence the 1 if nothing is present
+    if [[ $devices -lt 1 ]]; then
+        # Not connected
+        echo 1
+    else
+        # Connected
+        echo 0
+    fi
+}
+
+function connect_USB() {
+    echo $(launch_scrcpy)
+}
+
+function connect_WIFI() {
+    adb connect "$DEVICE_IP:5555"
+    local adb_try=$?
+    launch_scrcpy
+    local scrcpy_try=$?
+    if [[ $adb_try || $scrcpy_try ]]; then
+	    local result=1
+    else
+	    local result=0
+    fi
+    echo $result
+}
+
+function main() {
+   # We check that the device is connected either by USB or by Wi-Fi.
+   if [[ $(check_if_connected) -ne 0 ]]; then
+      echo "No devices found"
+      # If not, we try to connect first by USB
+      echo -n "Trying to connect through USB..."
+      if [[ $(connect_USB) -eq 0 ]]; then
+        # if it fails (because we can not find a device again or if the adb sends back an error)
+        # We try to connect by Wi-Fi
+        echo "USB connection failed!"
+        echo -n "Attempting Wi-Fi connection..."
+         if [[ $(connect_WIFI) -ne 0 ]]; then
+            echo "Wifi connection failed !"
+            # If it fails,
+            echo "Sleeping for $SLEEP_TIME seconds !"
+            sleep $SLEEP_TIME
+            # we try again after sleeping a bit
+            if [[ $(connect_WIFI) -ne 0 ]]; then
+            # If it failed again,
+            echo "Wifi connection failed again!"
+            # We send back an error
+            return 1    
+            fi
+         fi
+      fi 
+   else
+     # We have at least a device let's just try to connect to the first entry
+     try_connect
+   fi 
+}
+
+# Argument retrieval
+while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do case $1 in
+  -s | --sleep-time )
+    shift; SLEEP_TIME=$1
+    ;;
+  -i | --ip )
+    shift; DEVICE_IP=$1
+    ;;
+  -w | --window-title )
+    shift; WINDOW_TITLE=$1
+    ;;
+esac; shift; done
+
+# Argument default values
+[[ -z $SLEEP_TIME ]] && SLEEP_TIME=1
+[[ -z $DEVICE_IP ]] && DEVICE_IP="192.168.1.7"
+[[ -z $WINDOW_TITLE ]] && WINDOW_TITLE='Xperia XZ Premium'
+
+main

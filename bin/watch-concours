@@ -1,0 +1,19 @@
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash -p lynx libnotify
+
+
+function retrieve_page {
+    curl -G "http://intersection.dsi.cnrs.fr/intersection/resultats-ce-ita-fr.do?campagne=91&conc=20&phase=ADMISSION" --cookie "JSESSIONID=ADEFC43DB8A2D8466AEEE14B6E132510; __prd_saml_sp=aHR0cHM 6Ly9jb25jb3Vyc2V4dGVybmVzaXQuY25ycy5mci9zZWN1cmUv; __prd_redirect_user_idp=https%3A%2F%2Fjanus-e xt.cnrs.fr%2Fidp-ext"
+}
+
+function compute_hash {
+    md5sum - | cut -d' ' -f1
+}
+
+while [[ "$(retrieve_page | compute_hash)" == "e48a86afe3a7c93269dc302af3d37f89" ]]; do
+    RANDOM_WAIT_TIME=$((600 + RANDOM % 1800))
+    sleep $RANDOM_WAIT_TIME
+done
+
+RESULTAT=$(retrieve_page | tail +757 - | head | lynx -stdin -dump)
+notify-send -u critical "Résultat du concours CNRS IR BAP C n°20" "$RESULTAT"

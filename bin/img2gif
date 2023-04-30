@@ -1,0 +1,17 @@
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash -p ffmpeg
+# TODO: Use https://github.com/xwmx/bash-boilerplate maybe ? (Sounds overkill)
+while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do case $1 in
+  -fr | --framerate )
+    shift; framerate=$1
+    ;;
+  -f | --file-pattern )
+    shift; pattern=$1
+    ;;
+  -o | --output-filetype )
+    shift; file=$1
+    ;;
+esac; shift; done
+if [[ "$1" == '--' ]]; then shift; fi
+
+ffmpeg -f image2  -pattern_type glob -i $PWD/$pattern -filter_complex "[0:v] fps=$framerate,scale=480:-1,split [a][b];[a] scale=480x240,palettegen [p];[b][p] paletteuse" out.$file

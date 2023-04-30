@@ -1,0 +1,11 @@
+#!/bin/sh
+
+WINIMG=./win10.iso
+VIRTIMG=./virtio.iso
+qemu-system-x86_64 --enable-kvm -drive driver=raw,file=~/vm/win10.img,if=virtio -m 1536 \
+-net nic,model=virtio -net user -cdrom ${WINIMG} \
+-drive file=${VIRTIMG},index=3,media=cdrom \
+-rtc base=localtime,clock=host \
+-smp cores=1,threads=2 \
+-usb -device usb-tablet \
+-net user,smb=$HOME

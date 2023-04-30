@@ -1,0 +1,17 @@
+#!/usr/bin/env nix-shell
+#!nix-shell -i bash -p openssl
+
+echo -n "Create directory for "
+echo $1
+
+mkdir ./$1
+
+echo "Create a self signed CA 1/2"
+openssl genrsa -des3 -passout pass:xxxx -out ./$1/server.pass.key 2048 &&\
+echo "Create a self signed CA 2/2"
+openssl rsa -passin pass:xxxx -in ./$1/server.pass.key -out ./$1/private.key &&\
+echo "Create a CSR"
+openssl req -new -key ./$1/private.key -out ./$1/server.csr -subj "/C=FR/L=RVD/ST=Paris/O=RVD Corp./OU=A poor DevOps@Home" &&\
+echo "Sign the CSR"
+openssl x509 -req -extfile <(printf "subjectAltName=DNS:$1.r-v-d.fr") -days 604800 -in ./$1/server.csr -signkey ./$1/private.key -out ./$1/certificate.crt &&\
+echo "Done creating a self signed certificate"

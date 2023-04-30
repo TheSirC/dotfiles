@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+wget -A ${2:-"*.?gz,*.zip,*.rpm"} --random-wait -np -nd -H -r -l 1 $1

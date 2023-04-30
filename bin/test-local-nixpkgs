@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+pushd /home/sirc/Documents/Projets/ouroboros && git checkout feature/amdgpu-20.20 && nixos-rebuild -I nixpkgs=/home/sirc/nixpkgs test 2> /home/sirc/tmp/local-nixpkgs-test.log; git checkout local-master && popd

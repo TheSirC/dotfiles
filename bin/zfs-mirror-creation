@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+set -euxo pipefail
+
+DISK1=/dev/disk/by-id/nvme-Samsung_SSD_980_PRO_1TB_S5GXNF0R543444H
+DISK2=/dev/disk/by-id/nvme-Samsung_SSD_980_PRO_1TB_S5GXNF0R543466E
+
+# Creating partitions
+# This creates the ESP / Boot partition at the beginning of
+# the drive but numbered as the third partition:
+sudo sgdisk -n3:1M:+512M -t3:EF00 $DISK1 && \
+
+# This create the storage partition numbered as the
+# first partition:
+sudo sgdisk -n1:0:0 -t1:BF01 $DISK1 && \
+
+# Clone the partitions to the second drive:
+sudo sfdisk --dump $DISK1 | sudo sfdisk $DISK2 && \
+
+sudo zpool create -O mountpoint=none -o ashift=12 -O acltype=posixacl -O xattr=sa -O compression=lz4 hydra mirror $DISK1-part1 $DISK2-part1 && \
+
+sudo zfs create -o mountpoint=legacy hydra/root &&\
+sudo zfs create -o mountpoint=legacy hydra/root/home &&\
+sudo zfs create -o mountpoint=legacy hydra/root/nix &&\
+
+sudo mkfs.vfat $DISK1-part3 &&\
+sudo mkfs.vfat $DISK2-part3 &&\
+
+sudo mount -t zfs hydra/root /mnt &&\
+
+# Create directories to mount file systems on
+sudo mkdir /mnt/{nix,home,boot,boot-fallback} &&\
+
+# Mount the rest of the ZFS file systems
+sudo mount -t zfs hydra/root/nix /mnt/nix &&\
+sudo mount -t zfs hydra/root/home /mnt/home &&\
+
+# Mount both of the ESP's
+sudo mount $DISK1-part3 /mnt/boot &&\
+sudo mount $DISK2-part3 /mnt/boot-fallback

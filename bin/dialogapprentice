@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# Affiche une simple boîte qui s'efface après une seconde !
+dialog --infobox "Hello World" 0 0; sleep 1; clear;
+
+# Affiche la même simple boîte AVEC un titre qui s'efface après une seconde !
+dialog --title "Test" --infobox "Hello World" 0 0; sleep 1; clear;
+
+# Affiche la même simple boîte AVEC un titre ET un bouton OK qui s'efface après une seconde !
+dialog --title "Test" --msgbox "Hello World" 0 0; sleep 1; clear;
+
+# Affiche la même simple boîte AVEC un titre ET un bouton OK PLUS un titre en arrière plan qui s'efface après une seconde !
+dialog --title "Test" --backtitle "My first time" --msgbox "Hello World" 0 0; sleep 1; clear;
+
+# Affiche un Oui/Non
+dialog --title "Test" --backtitle "My first time" --yesno "Oui ou non ?" 0 0;
+
+# Si l'utilisateur choisit Oui, la commande retournera 0
+# Si l'utilisateur choisit Non, la commande retournera 1
+# Si l'utilisateur appuie sur [Return], la commande retournera 255
+
+REPONSE=$?
+
+# La structure précédente permet de récupérer la saisie de l'utilisateur dans la variable REPONSE
+
+case $REPONSE in
+  0) echo "Tu as appuyé Oui" ;;
+  1) echo "Tu as appuyé Non" ;;
+  255) echo "Tu as appuyé sur Return, you motherfuc*er" ;;
+esac
+clear
+# La structure précédente permet d'agir en fonction de la saisie de l'utilisateur dans la variable REPONSE

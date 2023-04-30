@@ -1,0 +1,95 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DISKS=("/dev/disk/by-id/ata-ST4000NE001-2MA101_WJG2CZV0" \
+"/dev/disk/by-id/ata-ST4000NE001-2MA101_WJG2D0JE" \
+"/dev/disk/by-id/ata-ST4000NE001-2MA101_WJG2D2DQ" \
+"/dev/disk/by-id/ata-ST4000NE001-2MA101_WS206DYG" \
+"/dev/disk/by-id/ata-ST4000NE001-2MA101_WS206EY1")
+POOL_NAME="hyperion.zfs.pool"
+declare -A DATASETS
+#         Name          Mountpoint
+DATASETS["Documents"]="/home/sirc/Documents"
+DATASETS["Musique"]="/home/sirc/Musique"
+DATASETS["Images"]="/home/sirc/Images"
+DATASETS["Series"]="/mnt/TV"
+DATASETS["Films"]="/mnt/Films"
+DATASETS["Mangas"]="/mnt/Mangas"
+DATASETS["Jeux"]="/home/sirc/Jeux"
+DATASETS["Telechargements"]="/mnt/Downloads"
+DATASETS["Applications"]="/home/sirc/Applications"
+
+function create_zfs_pool {
+    echo -n "Creation of the ZFS pool... "
+
+    # Enable posixacls, otherwise journalctl is broken for users (source : https://nixos.wiki/wiki/NixOS_on_ZFS#With_RAID)
+    zpool create \
+        -o ashift=12 \
+        -o altroot=/mnt \
+        -o feature@async_destroy=enabled \
+        -o feature@embedded_data=enabled \
+        -o feature@empty_bpobj=enabled \
+        -o feature@enabled_txg=enabled \
+        -o feature@lz4_compress=enabled \
+        -o feature@spacemap_histogram=enabled \
+        -O acltype=posixacl \
+        -O xattr=sa \
+        -O compression=lz4 \
+        -O atime=off \
+        $POOL_NAME raidz ${DISKS[*]}
+
+    local status=$?
+    if [[ $status -eq 0 ]]; then
+        echo "✅";
+    else
+        echo -e "\n❎ Pool creation failed!";
+    fi
+    return $status;
+}
+
+# Since ZFS is a copy-on-write filesystem even for deleting files disk space is needed.
+# Therefore it should be avoided to run out of disk space. (source: https://nixos.wiki/wiki/NixOS_on_ZFS#Reservations)
+function create_zfs_reservation_space {
+    echo -n "Creation of the ZFS dataset reservation space... "
+
+    zfs create -o refreservation=1G -o mountpoint=none $POOL_NAME/reserved
+
+    local status=$?
+    if [[ status -eq 0 ]]; then
+        echo "✅"
+    else
+        echo -e "\n❎ Reservation space creation failed!"
+    fi
+    return $status;
+}
+
+function create_zfs_dataset {
+   echo "Creation of the ZFS datasets... "
+   for dataset in "${!DATASETS[@]}"; do
+       echo -n -e "\tCreation of the dataset ${dataset} at ${DATASETS[$dataset]}..."
+       # If you want NixOS to auto-mount your ZFS filesystems during boot,
+       # you should set their mountpoint property to `legacy` and treat it like if it were any other filesystem
+       # (source: https://nixos.wiki/wiki/NixOS_on_ZFS#How_to_use_it)
+       zfs create -o mountpoint=legacy "$POOL_NAME/$dataset" && \
+       mount -t zfs "$POOL_NAME/$dataset" "${DATASETS[$dataset]}" 
+       chown sirc:users -R "${DATASETS[$dataset]}" && \
+       chmod 764 -R "${DATASETS[$dataset]}"
+
+       local status=$?
+       if [[ status -eq 0 ]]; then
+           echo " ✅"
+       else
+           echo -e "\n\t❎ Creation of the dataset ${dataset} at ${DATASETS[$dataset]} failed!"
+           break
+       fi
+   done 
+   return $status;
+}
+
+function main {
+    #create_zfs_pool && \
+    #create_zfs_reservation_space && \
+    create_zfs_dataset 
+}
+
+main

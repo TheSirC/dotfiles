@@ -1,0 +1,28 @@
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash -p dnsutils
+
+set -e
+
+IP="51.77.146.127"
+FQDN="mail.r-v-d.fr"
+domain="r-v-d.fr"
+
+# DNS check
+echo "Checking the DNS record"
+ping -c 5 $FQDN
+
+# rDNS check
+echo "Checking the rDNS record"
+host $IP
+
+# MX check
+echo "Checking the SPF record"
+dig -t TXT $domain
+
+# DKIM check
+echo "Checking the DKIM record"
+dig -t TXT "_mail.$domain"
+
+# DMARC check
+echo "Checking the DMARC record"
+dig -t TXT "_dmarc.$domain"
