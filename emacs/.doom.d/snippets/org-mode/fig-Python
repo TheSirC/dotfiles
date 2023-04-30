@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: Figure Python
+# key: fig-py
+# --
+
+#+caption: $1
+#+attr_latex: scale=0.75
+#+label: fig:$2
+#+begin_src python :file $3.${4:$$(yas-choose-value '("svg" "pdf" "png"))} :session $5 :exports results :results output graphics file
+$0
+#end_src

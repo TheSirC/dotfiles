@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Display math LaTeX
+# key: d-eq
+# --
+
+\[$0\]
+    

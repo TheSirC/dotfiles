@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Inline equation LaTeX
+# key: in-eq
+# --
+
+$ $0 $

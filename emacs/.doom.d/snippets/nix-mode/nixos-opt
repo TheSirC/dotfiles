@@ -4,12 +4,13 @@
 # --
 { config, pkgs, lib, ... }:
 
-with lib;
-
+let
+  inherit (lib) mkEnableOption mkIf;
+in
 {
-  options.perso.$1 = mkEnableOption "Enable $2";
+  options.perso.$1 = mkEnableOption "$2";
   config = mkIf config.perso.$1 {
     environment.systemPackages = with pkgs; [$3];
-    users.extraUsers.sirc.extraGroups = users.extraUsers.sirc.extraGroups ++ "$4";
+    users.extraUsers.sirc.extraGroups = ["$4"];
   };
 }

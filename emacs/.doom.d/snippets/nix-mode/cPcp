@@ -2,4 +2,4 @@
 # name: callPackage-custom packages
 # key: cPcp
 # --
-$1 = pkgs.callPackage ../../pkgs/$1.nix {};
+$1 = pkgs.callPackage ../../packages/$1.nix {};

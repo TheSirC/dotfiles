@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# contributor: Utilisateur principal
+# name: rapport-avancement
+# key: rapp-thales
+# --
+#+TITLE: Rapport d'avancement
+#+SUBTITLE: `(format-time-string "%B %Y")`
+#+AUTHOR: Claude-Alban RANÉLY-VERGÉ-DÉPRÉ
+#+EMAIL: claude-alban.ranely-verge-depre@polytechnique.edu
+#+KEYWORDS: thalès, xcan, luli, x, école polytechnique
+#+EXCLUDE_TAGS: noexport
+#+LANGUAGE: fr
+
+* Évènement clés
+** P61
+** P7-4F
+* Difficultés
+* À venir

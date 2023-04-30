@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: Org (vide)
+# uuid: nnd
+# key: new-org
+# condition: t
+# --
+
+#+TITLE: $1
+#+AUTHOR: Claude-Alban RANÉLY-VERGÉ-DÉPRÉ
+#+BIBLIOGRAPHY: biblio.bib
+#+EXCLUDE_TAGS: noexport
+#+LANGUAGE: fr
+#+OPTIONS: H:5
+#+OPTIONS: tex:t
+#+OPTIONS: toc:4          (only include two levels in TOC)
