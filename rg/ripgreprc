@@ -1,0 +1,9 @@
+# "Searches case insensitively if the pattern is all lowercase. Search case sensitively otherwise."
+# This is really useful in the general case of doing `rg text` and wanting to match case-insensitively on "text".
+--smart-case
+# "Search hidden files and directories"
+--hidden
+# "Will force ripgrep to follow symlinks"
+--follow
+# "Exclude files and directories for searching that match the given glob"
+--glob=!'{node_modules,.git,.DS_STORE,registry,target}'
