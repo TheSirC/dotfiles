@@ -1,0 +1,116 @@
+%% !TEX TS-program = xelatex
+%% !TEX encoding = UTF-8
+
+\usepackage{sectsty}								 % allow redefinition of section command formatting
+\usepackage{tabularx,booktabs}						 % more table options
+\usepackage{titling}                 				 % allow redefinition of title formatting
+\usepackage{multicol}								 % fore multicolumn layouts
+\usepackage{imakeidx}								 % create and index of words
+\usepackage{xcolor}									 % more colour options
+\usepackage{enumitem}								 % more list formatting options
+\usepackage{tocloft}								 % redefine table of contents, new list like objects
+
+%% define tables with fixed column width
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}	 % whitespace between paragraphs
+
+%% set TOC margins
+\setlength{\cftbeforesecskip}{15pt}					 % skip in TOC, also possible (incl. variants): \setlength{\cftbeforechapskip}{10pt}
+\usepackage{parskip}
+\usepackage{amsmath,amsfonts,amssymb}                % extensive math options & special math symbols
+\usepackage{calc}                                    % Calculs numériques
+\usepackage{siunitx}								 % elegant units
+\usepackage{listings}                                % source code
+\lstset{											 %
+	backgroundcolor=\color{white},					 % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+	basicstyle=\footnotesize,						 % the size of the fonts that are used for the code
+	breakatwhitespace=false,						 % sets if automatic breaks should only happen at whitespace
+	breaklines=true,								 % sets automatic line breaking
+	captionpos=b,									 % sets the caption-position to bottom
+	commentstyle=\color{green},						 % comment style
+	deletekeywords={...},							 % if you want to delete keywords from the given language
+	escapeinside={\%*}{*)},							 % if you want to add LaTeX within your code
+	extendedchars=true,								 % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+	frame=single,									 % adds a frame around the code
+	keepspaces=true,								 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{blue},						 % keyword style
+	morekeywords={*,...},							 % if you want to add more keywords to the set
+	numbers=left,									 % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=5pt,									 % how far the line-numbers are from the code
+	numberstyle=\tiny\color{gray},					 % the style that is used for the line-numbers
+	rulecolor=\color{black},						 % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=false,								 % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,							 % underline spaces within strings only
+	showtabs=false,									 % show tabs within strings adding particular underscores
+	stepnumber=2,									 % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{teal},						 % string literal style
+	tabsize=2,										 % sets default tabsize to 2 spaces
+	title=\lstname									 % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+\usepackage{tdsfrmath}
+
+%% NEEDS to be before hyperref, cleveref and autonum
+%% number figures, tables and equations within the sections
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+%% references and annotation, citations
+\usepackage[small,bf,hang]{caption}					 % captions
+\usepackage{sidecap}								 % adds side captions
+\usepackage[noabbrev,nameinlink]{cleveref}			 % better references than default \ref
+\usepackage{autonum}								 % only number referenced equations
+\usepackage{url}									 % urls
+\usepackage{cite}									 % well formed numeric citations
+\usepackage{hyperref}								 % add hyperlinks to references
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+	pdfauthor={Claude-Alban RANÉLY-VERGÉ-DÉPRÉ},
+	pdftitle={\@title}
+}
+
+\usepackage[lining]{InriaSans}
+\renewcommand*\oldstylenums[1]{{\fontfamily{InriaSans-OsF}\selectfont #1}}
+%% The font package uses mweights.sty which has som issues with the
+%% \normalfont command. The following two lines fixes this issue.
+\let\oldnormalfont\normalfont
+\def\normalfont{\oldnormalfont\mdseries}
+
+\usepackage{tikz}									 % advanced vector graphics
+\usepackage{pgfplots}								 % data plotting
+\usepackage{pgfplotstable}							 % table plotting
+\usepackage{placeins}								 % display floats in correct sections
+\usepackage{graphicx}								 % include external graphics
+\usepackage{longtable}								 % process long tables
+
+%% use most recent version of pgfplots
+\pgfplotsset{compat=newest}
+
+\usepackage{todonotes}								 % add to do notes
+\usepackage{epstopdf}								 % process eps-images
+\usepackage{float}									 % floats
+\usepackage{subfig}
+\usepackage{fancyhdr}								 % header and footer
+\usepackage{nag}
+\usepackage{textcomp}
+%% default placement for floats
+\floatplacement{figure}{h}
+\floatplacement{table}{h}
+
+%% default path for figures
+\graphicspath{{figures/}{images/}}
+
+%% Troubleshooting legacy problems
+%% No counter 'subfigure@save' defined. ^^I\subfloat
+\@ifundefined{showcaptionsetup}{}{%
+	\PassOptionsToPackage{caption=false}{subfig}
+}
+
+\usepackage{csvsimple}
+\usepackage{filecontents}
