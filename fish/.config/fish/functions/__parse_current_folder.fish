@@ -1,1 +1,0 @@
-/home/sirc/.config/fisherman/pure/functions/__parse_current_folder.fish

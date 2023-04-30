@@ -1,1 +1,0 @@
-/home/sirc/.config/fisherman/pure/functions/__format_time.fish
