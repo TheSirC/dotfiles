@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Insert macro
+# uuid: ins-macro
+# key: insm
+# condition: t
+# --
+{{{$1}}}

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: New citation
-# key: @cite
-# --
-[cite:@$0]

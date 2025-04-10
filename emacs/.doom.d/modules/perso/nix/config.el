@@ -2,12 +2,18 @@
 (use-package! lsp-mode
   :config
   (advice-add #'lsp-rename :after (lambda (&rest _) (projectile-save-project-buffers)))
-  (add-to-list 'lsp-language-id-configuration '(nix-mode . "nix"))
-  (lsp-register-client
-   (make-lsp-client :new-connection (lsp-stdio-connection '("rnix-lsp"))
-                    :major-modes '(nix-mode)
-                    :server-id 'nix)))
+  (add-to-list 'lsp-language-id-configuration '(nix-mode . "nix")))
 
-(add-hook! nix-mode #'lsp!)
+(use-package lsp-nix
+  :ensure lsp-mode
+  :after (lsp-mode)
+  :demand t
+  :custom
+  (lsp-nix-nil-formatter ["alejandra"]))
+
+(use-package nix-mode
+  :hook (nix-mode . lsp-deferred)
+  :ensure t)
+
 (customize-set-variable 'nix-nixfmt-bin "alejandra")
-(set-formatter! 'alejandra "alejandra --quiet" :modes '(nix-mode))
+(set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode))

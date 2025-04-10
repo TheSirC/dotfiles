@@ -1,8 +1,10 @@
 ;; From https://karthinks.com/software/scaling-latex-previews-in-emacs
-(add-hook! org-mode #'org-auctex-mode)
+(add-hook! 'org-mode-hook #'org-auctex-mode)
 
 (map!
-  :mode org-mode
+  :after org
+  :mode 'org-mode
   :localleader
+  :map org-mode-map
   :desc "LaTeX preview"
   :n ";" #'org-auctex-preview-dwim)

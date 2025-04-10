@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Quant. range
+# key: qtyrange
+# mode: org-mode
+# --
+
+\qtyrange{$1}{$2}{$3}$0

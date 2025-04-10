@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
 # name: New overlay
 # key: new-overlay
-# condition: t
+# mode: nix-mode
 # --
 self: super: {
   $1 = super.$1.overrideAttrs (

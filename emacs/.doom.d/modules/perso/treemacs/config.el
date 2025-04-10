@@ -2,10 +2,33 @@
 ;;
 (after! treemacs
         ;; Adding common directories to litter
-        (add-to-list 'treemacs-litter-directories "/target")
-        (add-to-list 'treemacs-litter-directories "/.cargo")
-        (add-to-list 'treemacs-litter-directories "/result")
-        (add-to-list 'treemacs-litter-directories "/node_modules")
+        '(dolist (pattern (list "/target" "/.cargo" "/result" "/node_modules"))
+           (add-to-list 'treemacs-litter-directories pattern))
+
+        (setq +treemacs-file-ignore-extensions
+                        '(;; LaTeX
+                        "aux" "ptc" "fdb_latexmk" "fls" "synctex.gz" "toc"
+                        ;; LaTeX - bibliography
+                        "bbl"
+                        ;; LaTeX - glossary
+                        "glg" "glo" "gls" "glsdefs" "ist" "acn" "acr" "alg"
+                        ;; LaTeX - pgfplots
+                        "mw"
+                        ;; LaTeX - pdfx
+                        "pdfa.xmpi"
+                        ;; Python
+                        "pyc")
+
+                 +treemacs-file-ignore-globs
+                        '(;; LaTeX
+                        "*/_minted-*"
+                        ;; AucTeX
+                        "*/.auctex-auto"
+                        "*/_region_.log"
+                        "*/_region_.tex"
+                        ;; Python
+                        "*/__pycache__")
+                 doom-themes-treemacs-theme "doom-colors")
 
         ;; We need to customize the faces of treemacs here because
         ;; we change the height of the variable pitch font

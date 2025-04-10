@@ -16,12 +16,9 @@
 (require 'org-macs)
 
 (declare-function org-create-formula-image "org" (string tofile options buffer &optional type))
-(declare-function org-latex-compile "ox-latex" (texfile &optional snippet))
+(declare-function org-latex-compile        "ox-latex" (texfile &optional snippet))
 (declare-function org-latex-guess-inputenc "ox-latex" (header))
-(declare-function org-splice-latex-header "org" (tpl def-pkg pkg snippets-p &optional extra))
-
-(defvar org-babel-tangle-lang-exts)
-(add-to-list 'org-babel-tangle-lang-exts '("pst" . "ps"))
+(declare-function org-splice-latex-header  "org" (tpl def-pkg pkg snippets-p &optional extra))
 
 (defvar org-format-latex-header)	  ; From org.el
 (defvar org-format-latex-options)	  ; From org.el
@@ -29,7 +26,7 @@
 (defvar org-latex-packages-alist)	  ; From org.el
 
 (defvar org-babel-default-header-args:latex
-  '((:results . "latex") (:exports . "results"))
+  '((:results . "file graphics") (:exports . "results"))
   "Default arguments to use when evaluating a PsTricks source block.")
 
 (defconst org-babel-header-args:latex
@@ -39,6 +36,8 @@
     (iminoptions  . :any)
     (imoutoptions . :any)
     (packages     . :any)
+    (pswidth      . :any)
+    (psheight     . :any)
     (pdfheight    . :any)
     (pdfpng       . :any)
     (pdfwidth     . :any)
@@ -47,54 +46,60 @@
     (buffer       . ((yes no))))
   "PsTricks-specific header arguments.")
 
+(defgroup ob-pst nil
+  "Org-mode blocks for PsTricks figures."
+  :group 'org)
+
 (defcustom org-babel-latex-htlatex "htlatex"
   "The htlatex command to enable conversion of PsTricks to SVG or HTML."
-  :group 'org-babel
+  :group 'ob-pst
   :type 'string)
 
 (defcustom org-babel-latex-preamble
   (lambda (_)
-    "\\documentclass[preview]{standalone}
+    "\\documentclass[border = 1mm, pstricks]{standalone}
 \\def\\pgfsysdriver{pgfsys-tex4ht.def}
 ")
   "Closure which evaluates at runtime to the PsTricks preamble.
 
 It takes 1 argument which is the parameters of the source block."
-  :group 'org-babel
+  :group 'ob-pst
   :type 'function)
 
 (defcustom org-babel-latex-begin-env
   (lambda (_)
-    "\\begin{document}")
+    "\\begin{document}
+\\begin{pspicture}")
   "Function that evaluates to the begin part of the document environment.
 
 It takes 1 argument which is the parameters of the source block.
 This allows adding additional code that will be ignored when
 exporting the literal PsTricks source."
-  :group 'org-babel
+  :group 'ob-pst
   :type 'function)
 
 (defcustom org-babel-latex-end-env
   (lambda (_)
-    "\\end{document}")
+    "\\end{pspicture}
+\\end{document}")
   "Closure which evaluates at runtime to the end part of the document environment.
 
 It takes 1 argument which is the parameters of the source block.
 This allows adding additional code that will be ignored when
 exporting the literal PsTricks source."
-  :group 'org-babel
+  :group 'ob-pst
   :type 'function)
 
 (defcustom org-babel-latex-pdf-svg-process
   "inkscape --pdf-poppler %f -T -l -o %O"
   "Command to convert a PDF file to an SVG file."
-  :group 'org-babel
+  :group 'ob-pst
   :type 'string)
 
 (defcustom org-babel-latex-htlatex-packages
   '("[usenames]{color}" "{tikz}" "{color}" "{listings}" "{amsmath}")
   "Packages to use for htlatex export."
-  :group 'org-babel
+  :group 'ob-pst
   :type '(repeat (string)))
 
 (defun org-babel-expand-body:latex (body params)
@@ -259,6 +264,12 @@ This function is called by `org-babel-execute-src-block'."
 (defun org-babel-prep-session:latex (_session _params)
   "Return an error because PsTricks doesn't support sessions."
   (error "PsTricks does not support sessions"))
+
+(eval-after-load "org"
+  (lambda ()
+    (add-to-list 'org-src-lang-modes         '("pst" . latex))
+    (add-to-list 'org-babel-tangle-lang-exts '("pst" . "pst"))
+    ))
 
 (provide 'ob-pst)
 

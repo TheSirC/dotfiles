@@ -4,7 +4,7 @@
 # Multiple devices connected with adb are NOT supported
 set -eo pipefail
 
-SCRCPY_CMD="scrcpy -Sw --max-size 720 --bit-rate 5M"
+SCRCPY_CMD="scrcpy -Sw --max-size 1080 --bit-rate 10M"
 
 launch_scrcpy() {
     $SCRCPY_CMD --window-title "$WINDOW_TITLE" 1>&2 2> /tmp/scrcpy.log

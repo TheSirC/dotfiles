@@ -8,15 +8,16 @@ set followpagepatterns.prev ^(prev(ious)?|older|précédent)\b|←|«|<<
 
 " Website fixes {{
 " I like wikiwand but I don't like the way it changes URLs
-bindurl wikiwand.com              yy composite js  document.location.href.replace("wikiwand.com/en","wikipedia.org/wiki") | clipboard yank
-bindurl ^https://web.whatsapp.com f  hint      -c  [tabindex]:not(.two)>div,a
-bindurl ^https://web.whatsapp.com F  hint      -bc [tabindex]:not(.two)>div,a
-bindurl ^https://duckduckgo.com   f  hint      -c  .results--main div h2
-bindurl ^https://duckduckgo.com   F  hint      -bc .results--main div h2
+bindurl ^http(s?)://wikiwand.com     yy composite js  document.location.href.replace("wikiwand.com/en","wikipedia.org/wiki") | clipboard yank
+bindurl ^http(s?)://web.whatsapp.com f  hint      -c  [tabindex]:not(.two)>div,a
+bindurl ^http(s?)://web.whatsapp.com F  hint      -bc [tabindex]:not(.two)>div,a
+bindurl ^http(s?)://duckduckgo.com   f  hint      -c  .results--main div h2
+bindurl ^http(s?)://duckduckgo.com   F  hint      -bc .results--main div h2
 
 " Only hint search results on Google & YouTube
 bindurl www.google.com s hint -Jc  #search div:not(.action-menu) > a
 bindurl www.google.com S hint -Jbc #search div:not(.action-menu) > a
+
 
 " YouTube
 bindurl   www.youtube.com s hint -J
@@ -27,6 +28,14 @@ unbindurl youtube.com     k
 unbindurl youtube.com     f
 unbindurl youtube.com     p
 unbindurl youtube.com     c
+" }}
+
+" Org-capture {{
+" Capture the current website in org
+bind ,c composite js "org-protocol:///capture?template=c&url=" + encodeURIComponent(location.href) + "&title=" + encodeURIComponent(document.title) + "&body=" + encodeURIComponent(window.getSelection()) | open
+
+" Capture the current video with a timestamp
+bind ,C composite js "org-protocol:///capture?template=c&url=" + encodeURIComponent(location.href + "&t=" + Math.floor(document.querySelector('video').currentTime.toFixed() / 60) + "m" + Math.floor(document.querySelector('video').currentTime.toFixed() % 60) + "s") + "&title=" + encodeURIComponent(document.title) + "&body=YouTube video at " + Math.floor(document.querySelector('video').currentTime.toFixed() / 60) + "m" + Math.floor(document.querySelector('video').currentTime.toFixed() % 60) + "s" | open
 " }}
 
 " General fixes {{

@@ -1,5 +1,6 @@
 # -*- mode: snippet -*-
 # name: callPackage-custom packages
 # key: cPcp
+# mode: nix-mode
 # --
 $1 = pkgs.callPackage ../../packages/$1.nix {};

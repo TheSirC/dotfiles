@@ -18,23 +18,22 @@
 
        :completion
        company                                             ; the ultimate code completion backend
-       (ivy +prescient)                                    ; a search engine for love and life
+       vertico                                             ; a search engine for love and life
 
        :ui
        deft                                                ; notational velocity for Emacs
        doom                                                ; what makes DOOM look the way it does
        doom-dashboard                                      ; a nifty splash screen for Emacs
-       doom-quit                                           ; DOOM quit-message prompts when you quit Emacs
        hl-todo                                             ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        hydra
        modeline                                            ; snazzy, Atom-inspired modeline, plus API
        nav-flash                                           ; blink cursor line after big motions
        ophints                                             ; highlight the region an operation acts on
        (popup +defaults)                                   ; tame sudden yet inevitable temporary windows
-       ligatures                                           ; ligatures or substitute text with pretty symbols
+       (ligatures +extra +fira)                                           ; ligatures or substitute text with pretty symbols
        treemacs                                            ; a project drawer, like neotree but cooler
        unicode                                             ; extended unicode support for various languages
-       vc-gutter                                           ; vcs diff in the fringe
+       (vc-gutter +pretty)                                 ; vcs diff in the fringe
        vi-tilde-fringe                                     ; fringe tildes to mark beyond EOB
        window-select                                       ; visually switch windows
        workspaces                                          ; tab emulation, persistence & separate workspaces
@@ -45,6 +44,7 @@
        file-templates                                      ; auto-snippets for empty files
        fold                                                ; (nigh) universal code folding
        (format +onsave)                                    ; automated prettiness
+       parinfer                                            ; for lispers that like Python more (i.e. nobody)
        multiple-cursors                                    ; editing in many places at once
        rotate-text                                         ; cycle region at point between text candidates
        snippets                                            ; my elves. They type so I don't have to
@@ -63,17 +63,17 @@
 
        :checkers
        syntax                                              ; tasing you for every semicolon you forget
-       spell                                               ; tasing you for misspelling mispelling
+       (spell +enchant +everywhere +flyspell)                                               ; tasing you for misspelling mispelling
        grammar                                             ; tasing grammar mistake every you make
 
        :tools
        biblio
        ansible
-       ;(debugger +lsp)                                     ; FIXME stepping through code, to help you add bugs
+       (debugger +lsp)                                     ; FIXME stepping through code, to help you add bugs
        direnv
        docker
        editorconfig                                        ; let someone else argue about tabs vs spaces
-       ein                                                 ; tame Jupyter notebooks with emacs
+       ;; ein                                                 ; tame Jupyter notebooks with emacs
        (eval +overlay)                                     ; run code, run (also, repls)
        (lookup +dictionnary +offline)                      ; navigate your code and its documentation
        (lsp +peek)
@@ -83,7 +83,6 @@
        tree-sitter                                         ; syntax and parsing, sitting in a tree...
 
        :lang
-       assembly                                           ; assembly for fun or debugging
        data                                               ; config/data formats
        (dart +flutter)                                    ; paint ui and not much else
        emacs-lisp                                         ; drown in parentheses
@@ -104,13 +103,19 @@
        (yaml +tree-sitter)                                ; JSON, but readable
 
        :perso
-       rust
+       evil
+       latex
        maxima
        nix
-       treemacs
-       latex
-       theme
        org
+       python
+       rlang
+       rust
+       spell
+       symex
+       theme
+       treemacs
+       typst
 
        :config
        (default +bindings +smartparens))

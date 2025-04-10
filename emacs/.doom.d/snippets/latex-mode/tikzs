@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: Tikzpicture standalone
+# uuid: tikzp-s
+# key: tikzs
+# condition: latex-mode
+# --
+
+\documentclass[tikz, border=10mm]{standalone}
+
+\begin{document}
+    \begin{tikzpicture}
+    $0
+    \end{tikzpicture}
+\end{document}

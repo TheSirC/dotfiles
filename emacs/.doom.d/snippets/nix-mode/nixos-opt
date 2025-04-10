@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
 # name: New option NixOS
 # key: nixos-opt
+# mode: nix-mode
 # --
 { config, pkgs, lib, ... }:
 

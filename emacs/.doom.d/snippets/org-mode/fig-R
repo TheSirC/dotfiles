@@ -1,11 +1,12 @@
 # -*- mode: snippet -*-
 # name: Figure R
 # key: fig-R
+# mode: org-mode
 # --
 
-#+caption: $1
-#+attr_latex: scale=0.75
-#+label: fig:$2
-#+begin_src R :file $3.${4:$$(yas-choose-value '("svg" "pdf" "png"))} :session $5 :exports results :results output graphics file
+#+CAPTION: $1
+#+ATTR_LATEX: scale=0.75
+#+LABEL: fig:$2
+#+BEGIN_SRC R :file $3.${4:$$(yas-choose-value '("svg" "pdf" "png"))} :session $5 :exports results :results output graphics file
 $0
-#+end_src
+#+END_SRC

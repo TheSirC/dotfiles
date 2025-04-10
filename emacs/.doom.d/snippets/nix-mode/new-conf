@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
 # name: New NixOS machine config
 # key: new-conf
+# mode: nix-mode
 # --
 { lib, config, pkgs, ... }:
 
@@ -8,7 +9,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../profiles/default.nix
-    <home-manager/nixos>
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   config = {

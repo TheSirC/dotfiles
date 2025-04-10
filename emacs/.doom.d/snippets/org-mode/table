@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Table
+# key: ftab
+# mode: org-mode
+# --
+
+#+CAPTION[$3]: $2
+#+ATTR_LATEX: :booktabs t :center t
+#+LABEL: tab:$1
+$0

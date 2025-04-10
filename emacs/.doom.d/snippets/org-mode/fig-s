@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Figure sidefigure
+# key: fig-s
+# mode: org-mode
+# --
+
+#+CAPTION: $1
+#+ATTR_LATEX: :float marginfigure
+#+LABEL: fig:$2
+$0

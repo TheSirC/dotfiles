@@ -2,7 +2,7 @@
 # name: Org (vide)
 # uuid: nnd
 # key: new-d
-# condition: t
+# mode: org-mode
 # --
 
 #+TITLE: $1

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Quant. list
+# key: qtylist
+# mode: org-mode
+# --
+
+\qtylist{$1}{$2}$0

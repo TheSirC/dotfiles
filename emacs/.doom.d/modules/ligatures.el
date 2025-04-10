@@ -3,9 +3,6 @@
 ;;    :symbol "keyword"))
 (plist-put! +ligatures-extra-symbols
   ;; Org
-  :name          "»"
-  :src_block     "»"
-  :src_block_end "«"
   :quote         "“"
   :quote_end     "”"
   ;; Functional
@@ -32,7 +29,15 @@
   :some          "∃"
   :return        "⟼"
   :yield         "⟻"
-  ;; Other
+  ;; Equality
+  :equal         "≡"
+  :not-equal     "≠"
+  :is            "≣"
+  :isnt          "≢"
+  :lte           "≤"
+  :gte           "≥"
+  ;; Sets
+  :subseteq      "⊆"
   :union         "⋃"
   :intersect     "∩"
   :diff          "∖"

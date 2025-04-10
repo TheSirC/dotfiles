@@ -5,8 +5,10 @@ set -g fish_key_bindings fish_vi_key_bindings
 direnv hook fish | source
 any-nix-shell fish --info-right | source
 cod init $fish_pid fish | source
+zoxide init fish | source
 
 # Miscellanious
+abbr -a j 'just'
 abbr -a pp 'xclip -i -selection c'
 abbr -a em 'emacs -nw'
 
@@ -16,7 +18,9 @@ abbr -a ffsy 'firefox https://www.youtube.com/results\?search_query='
 
 # CLI tools
 abbr -a g 'rg'
-abbr -a e 'exa'
+abbr -a e 'eza'
+abbr -a fdf 'fd -t f '
+abbr -a fdd 'fd -t d '
 
 # Navigation
 abbr -a ... 'cd ../..'
@@ -30,122 +34,11 @@ abbr -a nrt 'pushd $OUROBOROS; just t; popd'
 abbr -a nrb 'pushd $OUROBOROS; just b; popd'
 abbr -a nri 'pushd $OUROBOROS; just i; popd'
 abbr -a nrs 'pushd $OUROBOROS; just; popd'
-abbr -a our 'emacs -nw ~/Documents/Projets/ouroboros'
+abbr -a our 'emacs -nw $OUROBOROS'
 
 # Nix related shortcuts
 abbr -a nei 'nix-env -q --installed'
 abbr -a ncu 'nix-channel --update'
-abbr -a nsp 'nix-shell -p '
+abbr -a nsp 'nix-shell -p'
 abbr -a nsb 'nix-shell '
-
-# =============================================================================
-#
-# Utility functions for zoxide.
-#
-
-# pwd based on the value of _ZO_RESOLVE_SYMLINKS.
-function __zoxide_pwd
-    builtin pwd -L
-end
-
-# A copy of fish's internal cd function. This makes it possible to use
-# `alias cd=z` without causing an infinite loop.
-if ! builtin functions -q __zoxide_cd_internal
-    if builtin functions -q cd
-        builtin functions -c cd __zoxide_cd_internal
-    else
-        alias __zoxide_cd_internal='builtin cd'
-    end
-end
-
-# cd + custom logic based on the value of _ZO_ECHO.
-function __zoxide_cd
-    __zoxide_cd_internal $argv
-end
-
-# =============================================================================
-#
-# Hook configuration for zoxide.
-#
-
-# Initialize hook to add new entries to the database.
-function __zoxide_hook --on-variable PWD
-    test -z "$fish_private_mode"
-    and command zoxide add -- (__zoxide_pwd)
-end
-
-# =============================================================================
-#
-# When using zoxide with --no-cmd, alias these internal functions as desired.
-#
-
-set __zoxide_z_prefix 'z!'
-
-# Jump to a directory using only keywords.
-function __zoxide_z
-    set -l argc (count $argv)
-    set -l completion_regex '^'(string escape --style=regex $__zoxide_z_prefix)'(.*)$'
-
-    if test $argc -eq 0
-        __zoxide_cd $HOME
-    else if test "$argv" = -
-        __zoxide_cd -
-    else if test $argc -eq 1 -a -d $argv[1]
-        __zoxide_cd $argv[1]
-    else if set -l result (string match --groups-only --regex $completion_regex $argv[-1])
-        __zoxide_cd $result
-    else
-        set -l result (command zoxide query --exclude (__zoxide_pwd) -- $argv)
-        and __zoxide_cd $result
-    end
-end
-
-# Completions for `z`.
-function __zoxide_z_complete
-    set -l tokens (commandline --current-process --tokenize)
-    set -l curr_tokens (commandline --cut-at-cursor --current-process --tokenize)
-
-    if test (count $tokens) -le 2 -a (count $curr_tokens) -eq 1
-        # If there are < 2 arguments, use `cd` completions.
-        __fish_complete_directories "$tokens[2]" ''
-    else if test (count $tokens) -eq (count $curr_tokens)
-        # If the last argument is empty, use interactive selection.
-        set -l query $tokens[2..-1]
-        set -l result (zoxide query --exclude (__zoxide_pwd) -i -- $query)
-        and echo $__zoxide_z_prefix$result
-        commandline --function repaint
-    end
-end
-
-# Jump to a directory using interactive search.
-function __zoxide_zi
-    set -l result (command zoxide query -i -- $argv)
-    and __zoxide_cd $result
-end
-
-# =============================================================================
-#
-# Commands for zoxide. Disable these using --no-cmd.
-#
-
-abbr --erase z &>/dev/null
-complete --command z --erase
-function z
-    __zoxide_z $argv
-end
-complete --command z --no-files --arguments '(__zoxide_z_complete)'
-
-abbr --erase zi &>/dev/null
-complete --command zi --erase
-function zi
-    __zoxide_zi $argv
-end
-
-# =============================================================================
-#
-# To initialize zoxide, add this to your configuration (usually
-# ~/.config/fish/config.fish):
-#
-#   zoxide init fish | source
-#
-# Note: zoxide only supports fish v3.4.0 and above.
+abbr -a nrn 'nix run nixpkgs#'

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Quant. prod. avec unit
+# key: qtyp
+# mode: org-mode
+# --
+
+\qtyproduct{$1}{$2}$0

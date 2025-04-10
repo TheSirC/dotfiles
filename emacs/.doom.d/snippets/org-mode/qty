@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Quant. avec unit
+# key: qty
+# mode: org-mode
+# --
+
+\qty{$1}{$2}$0
